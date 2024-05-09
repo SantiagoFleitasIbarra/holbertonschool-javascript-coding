@@ -1,9 +1,13 @@
 #!/usr/bin/node
 
-const fetch = require('node-fetch');
+const request = require('request');
 
 const url = process.argv[2];
 
-fetch(url).then(function (response) {
-  console.log(`code: ${response.status}`);
+request(url, function (error, response) {
+  if (error) {
+    console.error(error);
+  }
+  console.log("code:", response.statusCode);
+
 });
